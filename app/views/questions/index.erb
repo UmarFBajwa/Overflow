@@ -12,8 +12,9 @@
   <% @questions_h.each do |question| %>
       <p> <%= question[:votes] %> votes</p>
       <p> <%= question[:answers] %> answers</p>
-      <h4> <%= question[:title] %></h4>
+      <h4><a href="/questions/<%= question[:question_id] %>"> <%= question[:title] %></a></h4>
       <p> <%= question[:date] %></p>
       <hr>
   <% end %>
 </div>
+
