@@ -15,7 +15,7 @@ end
 10.times do
   Question.create(
     title: Faker::Lorem.sentence,
-    body: Faker::Lorem.sentence,
+    body: Faker::Lorem.paragraph,
     user_id: rand(1..20)
     )
 end
