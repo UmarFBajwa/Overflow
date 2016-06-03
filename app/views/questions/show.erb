@@ -1,3 +1,25 @@
-<h2><%= @question.title %></h2><br>
-<p><%= @question.body %></p><br>
+<h2>Detailed Question</h2>
+<h3><%= @question.title %></h3><br>
+<p><%= @question.body %></p>
 <p>Last update: <%= @question.updated_at %></p>
+
+<% if @question.user_id == session[:user_id] %>
+<form action="/questions/<%= @question.id %>/edit" method="get">
+  <input type="submit" value="Edit Question">
+</form>
+<form action="/questions/<%= @question.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Question">
+</form>
+<% end %>
+
+<br>
+<h3>Here are the answers to the question</h3>
+<div id="answers-container">
+  <% @answers.each do |answer| %>
+      <p> <%= answer[:votes] %> votes</p>
+      <p> <%= answer[:body] %> answers</p>
+      <p> <%= answer[:date] %></p>
+      <hr>
+  <% end %>
+</div>
