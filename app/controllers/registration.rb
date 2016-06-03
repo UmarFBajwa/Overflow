@@ -2,7 +2,7 @@ post '/login' do
   user = User.authenticate(params[:username], params[:password])
   if user
     session[:user_id] = user.id
-     redirect "users/#{user.id}/tweets"
+     redirect "users/#{user.id}"
   else
     redirect '/'
   end
