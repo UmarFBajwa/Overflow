@@ -1,5 +1,6 @@
 get '/questions' do
-  @questions = Question.all
+  questions = Question.all
+  @questions_h = questions.map {|q| {title: q.title, votes: q.votes.count, answers: q.answers.count, date:q.created_at}}
   erb :'questions/index'
 end
 
@@ -8,7 +9,7 @@ get '/questions/new' do
 end
 
 post '/questions' do
-  @question = Question.new(params[:question])
+  @question = Question.new(params[:question], user_id: session[:user_id]) # TO CHECK WITH LOGIN LOGIC 
   if @question.save
     redirect '/questions'
   else
@@ -16,7 +17,7 @@ post '/questions' do
   end
 end
 
-get '/questions/:id/' do
+get '/questions/:id' do
   @question = Question.find(params[:id])
   erb :'questions/show'
 end

@@ -1,0 +1,19 @@
+<h2>Top Questions</h2>
+
+<div id="sorting-nav">
+    <ul>
+      <li><a href="#">Vote</a></li>
+      <li><a href="#">Newest</a></li>
+      <li><a href="#">Logout</a></li>
+    </ul>
+</div>
+
+<div id="questions-container">
+  <% @questions_h.each do |question| %>
+      <p> <%= question[:votes] %> votes</p>
+      <p> <%= question[:answers] %> answers</p>
+      <h4> <%= question[:title] %></h4>
+      <p> <%= question[:date] %></p>
+      <hr>
+  <% end %>
+</div>
