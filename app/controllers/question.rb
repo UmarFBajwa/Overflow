@@ -9,7 +9,7 @@ get '/questions/new' do
 end
 
 post '/questions' do
-  @question = Question.new(params[:question], user_id: session[:id]) # TO CHECK WITH LOGIN LOGIC 
+  @question = Question.new(params[:question], user_id: session[:user_id]) # TO CHECK WITH LOGIN LOGIC 
   if @question.save
     redirect '/questions'
   else
@@ -17,7 +17,7 @@ post '/questions' do
   end
 end
 
-get '/questions/:id/' do
+get '/questions/:id' do
   @question = Question.find(params[:id])
   erb :'questions/show'
 end
