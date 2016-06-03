@@ -20,7 +20,7 @@ end
 
 get '/questions/:id' do
   @question = Question.find(params[:id])
-  @answers = @question.answers.map {|a| {votes: a.votes.count, body: a.body, date:a.created_at}}
+  @answers = @question.answers.map {|a| {user_id: a.user_id, votes: a.votes.count, body: a.body, date:a.created_at}}
   erb :'questions/show'
 end
 

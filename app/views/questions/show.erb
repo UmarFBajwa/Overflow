@@ -17,10 +17,8 @@
         <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-desc vote-button upvote-button"></button>
       </form> -->
 
-
-
       <br>
-<h3>Here are the answers to the question</h3>
+<h2>Here are the answers to the question</h2>
   <div id="answers-container">
     <% @answers.each do |answer| %>
       <p> <%= answer[:votes] %> votes</p>
@@ -28,7 +26,7 @@
       <p> <%= answer[:date] %></p>
       <hr>
 
-    <% if answer[:user_id] == session[:user_id] %>
+    <% if answer[:user_id] == session[:user_id]  %>
       <form action="/questions/<%= @question.id %>/answers/<%=session[:user_id]%>/edit" method="get">
         <input type="submit" value="Edit Answer">
         </form>
