@@ -1,0 +1,13 @@
+<h2>Update your answer</h2>
+<% if current_user %>
+<form id=edit-question-form action="/questions/<%= @question.id %>/answers/<%= @answer.id %>" method="post">
+  <input type="hidden" name="_method" value="PUT">
+  <textarea name="answer[body]" rows="4" cols="50" required><%= @answer.body %></textarea><br><br>
+  <input type="submit" value="Update Answer!">
+
+</form>
+
+<%else  %>
+
+<p> What you talking about Willis? </p>
+<%end  %>
