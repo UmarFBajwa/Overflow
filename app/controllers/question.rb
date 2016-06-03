@@ -46,11 +46,11 @@ delete '/questions/:id' do
   redirect '/questions' #redirect back to questions index page
 end
 
-get '/questions/:question_id/answers' do
-  @question = Question.find(params[:question_id])
-  @answers = @question.answers
-  erb :'answers/index'
-end
+# get '/questions/:question_id/answers' do
+#   @question = Question.find(params[:question_id])
+#   @answers = @question.answers
+#   erb :'answers/index'
+# end
 
 get '/questions/:question_id/answers/new' do
   @question = Question.find(params[:question_id])
@@ -60,6 +60,8 @@ end
 post '/questions/:question_id/answers' do
   @question = Question.find(params[:question_id])
   @answer = @question.answers.new(params[:answer])
+  p params
+  p "*" * 19
   if @answer.save
     redirect "/questions/#{@question.id}/answers"
   else
