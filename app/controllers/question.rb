@@ -62,7 +62,7 @@ post '/questions/:question_id/answers' do
   @question = Question.find(params[:question_id])
   @answer = @question.answers.new(params[:answer])
   if @answer.save
-    redirect "/questions/#{@question.id}/answers"
+    redirect "/questions/#{@question.id}"
   else
     erb :'answers/new' #show new answers view again(potentially displaying errors)
   end
