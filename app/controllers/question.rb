@@ -9,7 +9,7 @@ get '/questions/new' do
 end
 
 post '/questions' do
-  @question = Question.new(params[:question])
+  @question = Question.new(params[:question], user_id: session[:id]) # TO CHECK WITH LOGIN LOGIC 
   if @question.save
     redirect '/questions'
   else
