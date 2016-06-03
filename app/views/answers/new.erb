@@ -1,0 +1,9 @@
+<h2>What's your answer?</h2>
+
+<form id=new-answer-form action="/questions/<%= @question.id  %>/answers" method="post">
+  <input type="hidden" name="question_id" value="<%=@question.id%>"required><br><br>
+  <input type="hidden" name="user_id" value="<%=session[:user_id]%>"required><br><br>
+  <textarea name="answer[body]" rows="4" cols="50" placeholder="Describe your question" required></textarea><br><br>
+  <input type="submit" value="Answer !">
+
+</form>
