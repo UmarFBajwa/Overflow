@@ -23,11 +23,12 @@ end
 10.times do
   Answer.create(
     body: Faker::Lorem.paragraph,
-    user_id: rand(1..20)
+    user_id: rand(1..20),
+    question_id: rand(1..10)
     )
 end
 
-10.times do
+100.times do
   Vote.create(
     user_id: rand(1..20),
     voteable_id: rand(1..10),
