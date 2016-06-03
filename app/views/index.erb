@@ -3,7 +3,23 @@
 
 
 
-<center><h1>This is where all the questions will be</h1></center>
+<div id="sorting-nav">
+    <ul>
+      <li><a href="#">Vote</a></li>
+      <li><a href="#">Newest</a></li>
+      <li><a href="#">Logout</a></li>
+    </ul>
+</div>
+
+<div id="questions-container">
+  <% @questions_h.each do |question| %>
+      <p> <%= question[:votes] %> votes</p>
+      <p> <%= question[:answers] %> answers</p>
+      <h4><a href="/questions/<%= question[:question_id] %>"> <%= question[:title] %></a></h4>
+      <p> <%= question[:date] %></p>
+      <hr>
+  <% end %>
+</div>
 
 
 <center><h2> Click above to find answers </h2></center>
