@@ -60,8 +60,6 @@ end
 post '/questions/:question_id/answers' do
   @question = Question.find(params[:question_id])
   @answer = @question.answers.new(params[:answer])
-  p params
-  p "*" * 19
   if @answer.save
     redirect "/questions/#{@question.id}/answers"
   else
@@ -69,11 +67,11 @@ post '/questions/:question_id/answers' do
   end
 end
 
-get '/questions/:question_id/answers/:id' do
-  @question = Question.find(params[:question_id])
-  @answer = @question.answers.find(params[:id])
-  erb :'answers/show'
-end
+# get '/questions/:question_id/answers/:id' do
+#   @question = Question.find(params[:question_id])
+#   @answer = @question.answers.find(params[:id])
+#   erb :'answers/show'
+# end
 
 get '/questions/:question_id/answers/:id/edit' do
   @question = Question.find(params[:question_id])
