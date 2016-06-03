@@ -1,0 +1,9 @@
+<h2>Update your question</h2>
+
+<form id=edit-question-form action="/questions/<%= @question.id %>" method="post">
+  <input type="hidden" name="_method" value="PUT">
+  <input type="text" name="question[title]" value="<%= @question.title %>" required><br><br>
+  <textarea name="question[body]" rows="4" cols="50" required><%= @question.body %></textarea><br><br>
+  <input type="submit" value="Update Question!">
+
+</form>
