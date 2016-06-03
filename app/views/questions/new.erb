@@ -1,11 +1,8 @@
 <h2>What's your question about?</h2>
 
-<form id=new-question-form action="/questions" method="POST">
-  <input type="text" name="title" placeholder="Question title"><br><br>
-  <textarea name="body" rows="4" cols="50" placeholder="Describe your question"></textarea><br><br>
+<form id=new-question-form action="/questions" method="post">
+  <input type="text" name="question[title]" placeholder="Question title" required><br><br>
+  <textarea name="question[body]" rows="4" cols="50" placeholder="Describe your question" required></textarea><br><br>
   <input type="submit" value="Ask !">
-
-
-
 
 </form>
