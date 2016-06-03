@@ -9,7 +9,8 @@ get '/questions/new' do
 end
 
 post '/questions' do
-  @question = Question.new(params[:question], user_id: session[:user_id]) # TO CHECK WITH LOGIN LOGIC 
+  @question = Question.new(title: params[:title], body: params[:body], user_id: session[:user_id])
+
   if @question.save
     redirect '/questions'
   else
@@ -29,10 +30,10 @@ end
 
 put '/questions/:id' do
   #get params from url
-  @question = Question.find(params[:id]) #define variable to edit
-  @question.assign_attributes(params[:question]) #assign new attributes
-  if @question.save #saves new question or returns false if unsuccessful
-    redirect '/questions' #redirect back to questions index page
+  @question = Question.find(params[:id])
+  @question.assign_attributes(params[:question])
+  if @question.save
+    redirect '/questions'
   else
     erb :'questions/edit' #show edit question view again(potentially displaying errors)
   end
