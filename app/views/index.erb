@@ -3,22 +3,35 @@
 
 
 
-<div id="sorting-nav">
-    <ul>
+<div id="sorting-nav" >
+    <h3>Sort By:</h3>
+    <ul class="nav nav-tabs">
       <li><a href="#">Vote</a></li>
       <li><a href="#">Newest</a></li>
-      <li><a href="#">Logout</a></li>
+      <li><a href="#">Trending</a></li>
     </ul>
 </div>
 
+<h3>Top questions</h3>
 <div id="questions-container">
   <% @questions_h.each do |question| %>
+  <div class="row">
+    <div class="col-md-2">
       <p> <%= question[:votes] %> votes</p>
+    </div>
+    <div class="col-md-2">
       <p> <%= question[:answers] %> answers</p>
+      </div>
+      <div class="col-md-6">
       <h4><a href="/questions/<%= question[:question_id] %>"> <%= question[:title] %></a></h4>
+      </div>
+      <div class="col-md-2">
       <p> <%= question[:date] %></p>
+      </div>
       <hr>
+    </div>
   <% end %>
+
 </div>
 
 
