@@ -25,16 +25,7 @@
 
    Signed in as: <%= current_user.username %>
    <% else %>
-   <a href="/">Home</a> |
- <form action="/login" method="post">
-  Username:<br>
-  <input type="text" name="username" placeholder="Username"><br>
-  Password:<br>
-  <input type="password" name="password" placeholder="Password"><br><br>
-  <input type="submit" >
-</form> |
-
-  <a href="/register" > Register</a>
+ <form action="/login" method="post">  <a href="/">Home</a> | <a href="/register" > Register</a> | <input type="text" name="username" placeholder="Username"> | <input type="password" name="password" placeholder="Password"> <input type="submit" ></form>
 
    <% end %>
  </center></nav>
