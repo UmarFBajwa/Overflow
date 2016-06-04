@@ -20,7 +20,7 @@ end
 
 get '/questions/:id' do
   @question = Question.find(params[:id])
-  @answers = @question.answers.map {|a| {user_id: a.user_id, votes: a.votes.count, body: a.body, date:a.created_at}}
+  @answers = @question.answers.map {|a| {id: a.id, user_id: a.user_id, votes: a.votes.count, body: a.body, date:a.created_at}}
   erb :'questions/show'
 end
 
@@ -63,12 +63,22 @@ get '/questions/:question_id/answers/new' do
 end
 
 post '/questions/:question_id/answers' do
-  @question = Question.find(params[:question_id])
-  @answer = @question.answers.new(params[:answer])
-  if @answer.save
-    redirect "/questions/#{@question.id}"
+  if request.xhr?
+    @question = Question.find(params[:question_id])
+    @answer = @question.answers.new(params[:answer])
+    if @answer.save
+      erb :"answers/new_answer", layout: false
+    else
+      erb :'answers/new'
+    end
   else
-    erb :'answers/new' #show new answers view again(potentially displaying errors)
+    @question = Question.find(params[:question_id])
+    @answer = @question.answers.new(params[:answer])
+    if @answer.save
+      redirect "/questions/#{@question.id}"
+    else
+      erb :'answers/new'
+    end
   end
 end
 
@@ -96,7 +106,7 @@ end
 
 delete '/questions/:question_id/answers/:id' do
   @question = Question.find(params[:question_id])
-  @answer = @question.answers.find(params[:id])
+  @answer = Answer.find(params[:id])
   @answer.destroy
-  redirect "/questions/#{@question.id}/answers"
+  redirect "/questions/#{@question.id}"
 end

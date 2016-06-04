@@ -1,0 +1,15 @@
+
+      <p> <%= @answer[:votes] %> votes</p>
+      <p> <%= @answer[:body] %> answers</p>
+      <p> <%= @answer[:date] %></p>
+      <hr>
+
+    <% if @answer[:user_id] == session[:user_id]  %>
+      <form action="/questions/<%= @question.id %>/answers/<%=session[:user_id]%>/edit" method="get">
+        <input type="submit" value="Edit Answer">
+        </form>
+        <form action="/questions/<%= @question.id %>/answers/<%=session[:user_id]%>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete Answer">
+        </form>
+        <% end %>
